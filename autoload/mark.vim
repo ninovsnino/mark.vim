@@ -1,5 +1,3 @@
-autoload/mark.vim	[[[1
-1251
 " Script Name: mark.vim
 " Description: Highlight several words in different colors simultaneously.
 "
@@ -1251,4 +1249,3 @@ else
 endif
 
 " vim: ts=4 sts=0 sw=4 noet
-

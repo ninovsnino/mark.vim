@@ -1,5 +1,3 @@
-plugin/mark.vim	[[[1
-493
 " Script Name: mark.vim
 " Description: Highlight several words in different colors simultaneously.
 "
@@ -493,4 +491,3 @@ endif
 let &cpo = s:save_cpo
 unlet s:save_cpo
 " vim: ts=4 sts=0 sw=4 noet
-

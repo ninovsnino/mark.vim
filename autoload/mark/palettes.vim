@@ -1,5 +1,3 @@
-autoload/mark/palettes.vim	[[[1
-136
 " mark/palettes.vim: Additional palettes for mark highlighting.
 "
 " DEPENDENCIES:
@@ -136,4 +134,3 @@ function! mark#palettes#Maximum()
 endfunction
 
 " vim: ts=4 sts=0 sw=4 noet
-
