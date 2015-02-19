@@ -209,10 +209,12 @@ install details
 This script is packaged as a vimball. If you have the "gunzip" decompressor 
 in your PATH, simply edit the *.vmb.gz package in Vim; otherwise, decompress 
 the archive first, e.g. using WinZip. Inside Vim, install by sourcing the 
-vimball or via the :UseVimball command. 
+vimball or via the `:UseVimball` command. 
+```
     vim mark*.vmb.gz 
     :so % 
-To uninstall, use the :RmVimball command. 
+```
+To uninstall, use the `:RmVimball` command. 
 
 ## DEPENDENCIES 
 - Requires Vim 7.1 with matchadd(), or Vim 7.2 or higher. 
@@ -221,101 +223,137 @@ To uninstall, use the :RmVimball command.
 For a permanent configuration, put the following commands into your vimrc. 
 
 This plugin defines 6 mark groups: 
+```
     1: Cyan  2:Green  3:Yellow  4:Red  5:Magenta  6:Blue 
+```
 Higher numbers always take precedence and are displayed above lower ones. 
 
 Especially if you use GVIM, you can switch to a richer palette of up to 18 
 colors: 
-```vimscript
+```
     let g:mwDefaultHighlightingPalette = 'extended' 
 ```
 Or, if you have both good eyes and display, you can try a palette that defines 
 27, 58, or even 77 colors, depending on the number of available colors: 
+```
     let g:mwDefaultHighlightingPalette = 'maximum' 
+```
 
 If you like the additional colors, but don't need that many of them, restrict 
 their number via: 
+```
         let g:mwDefaultHighlightingNum = 9 
+```
 
 If none of the default highlightings suits you, define your own colors in your 
 vimrc file (or anywhere before this plugin is sourced, but after any 
-:colorscheme), in the following form (where N = 1..): 
+`:colorscheme`), in the following form (where N = 1..): 
+```
     highlight MarkWordN ctermbg=Cyan ctermfg=Black guibg=#8CCBEA guifg=Black 
+```
 You can also use this form to redefine only some of the default highlightings. 
 If you want to avoid losing the highlightings on :colorscheme commands, you 
 need to re-apply your highlights on the ColorScheme event, similar to how 
 this plugin does. Or you define the palette not via :highlight commands, but 
 use the plugin's infrastructure: 
+```
     let g:mwDefaultHighlightingPalette = [ 
     \   { 'ctermbg':'Cyan', 'ctermfg':'Black', 'guibg':'#8CCBEA', 'guifg':'Black' }, 
     \   ... 
     \] 
+```
 
 If you want to switch multiple palettes during runtime, you need to define 
 them as proper palettes: 
+```
     let g:mwPalettes['mypalette'] = [ 
     \   { 'ctermbg':'Cyan', 'ctermfg':'Black', 'guibg':'#8CCBEA', 'guifg':'Black' }, 
     \   ... 
     \] 
     let g:mwPalettes['other'] = [ ... ] 
     let g:mwDefaultHighlightingPalette = 'mypalette' 
+```
 To add your palette to the existing ones, do this after the default palette 
-has been defined, e.g. in .vim/after/plugin/mark.vim). Alternatively, you can 
-also completely redefine all available palettes in .vimrc. 
+has been defined, e.g. in `.vim/after/plugin/mark.vim`). Alternatively, you can 
+also completely redefine all available palettes in `.vimrc`. 
 
 The search type highlighting (in the search message) can be changed via: 
+```
     highlight link SearchSpecialSearchType MoreMsg 
+```
 
 By default, any marked words are also added to the search (/) and input (@) 
 history; if you don't want that, remove the corresponding symbols from: 
+```
     let g:mwHistAdd = '/@' 
+```
 
 To enable the automatic restore of marks from a previous Vim session: 
+```
     let g:mwAutoLoadMarks = 1 
+```
 
 To turn off the automatic persistence of marks across Vim sessions: 
+```
     let g:mwAutoSaveMarks = 0 
+```
 You can still explicitly save marks via :MarkSave. 
 
 If you have set 'ignorecase', but want marks to be case-insensitive, you can 
 override the default behavior of using 'ignorecase' by setting: 
+```
         let g:mwIgnoreCase = 0 
+```
 
 You can use different mappings by mapping to the <Plug>Mark... mappings (use 
 ":map <Plug>Mark" to list them all) before this plugin is sourced. 
 
 There are no default mappings for toggling all marks and for the :MarkClear 
 command, but you can define some yourself: 
+```
     nmap <Leader>M <Plug>MarkToggle 
     nmap <Leader>N <Plug>MarkAllClear 
+```
 As the latter is irreverible, there's also an alternative with an additional 
 confirmation: 
+```
     nmap <Leader>N <Plug>MarkConfirmAllClear 
+```
 
 To remove the default overriding of * and #, use: 
+```
     nmap <Plug>IgnoreMarkSearchNext <Plug>MarkSearchNext 
     nmap <Plug>IgnoreMarkSearchPrev <Plug>MarkSearchPrev 
+```
 
 If you don't want the * and # mappings remember the last search type and 
 instead always search for the next occurrence of the current mark, with a 
 fallback to Vim's original * command, use: 
+```
     nmap * <Plug>MarkSearchOrCurNext 
     nmap # <Plug>MarkSearchOrCurPrev 
+```
 
 The search mappings (*, #, etc.) interpret [count] as the number of 
 occurrences to jump over. If you don't want to use the separate 
 mark-keypad-searching mappings, and rather want [count] select the highlight 
 group to target (and you can live with jumps restricted to the very next 
 match), (re-)define to these mapping targets: 
+```
     nmap * <Plug>MarkSearchGroupNext 
     nmap # <Plug>MarkSearchGroupPrev 
+```
 
 You can remap the direct group searches (by default via the keypad 1-9 keys): 
+```
     nmap <Leader>1  <Plug>MarkSearchGroup1Next 
     nmap <Leader>!  <Plug>MarkSearchGroup1Prev 
+```
 
 If you need more / less groups, this can be configured via: 
+```
     let g:mwDirectGroupJumpMappingNum = 20 
+```
 Set to 0 to completely turn off the keypad mappings. This is easier than 
 remapping all <Plug>-mappings. 
 
@@ -327,11 +365,15 @@ line). The Vim Tips Wiki describes such a setup for the built-in search at
     http://vim.wikia.com/wiki/Search_for_visually_selected_text 
 You can achieve the same with the Mark plugin through the <Plug>MarkIWhiteSet 
 mapping target: Using this, you can assign a new visual mode mapping <Leader>* 
+```
     xmap <Leader>* <Plug>MarkIWhiteSet 
+```
 or override the default v_<Leader>m mapping, in case you always want this 
 behavior: 
+```
     vmap <Plug>IgnoreMarkSet <Plug>MarkSet 
     xmap <Leader>m <Plug>MarkIWhiteSet 
+```
 
 ## INTEGRATION 
 The following functions offer (read-only) access to the number of marks and 
