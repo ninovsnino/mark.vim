@@ -55,6 +55,7 @@ plugin offers the following advantages over the original:
   in the current window only. 
 
 ## HIGHLIGHTING 
+```
 <Leader>m               Mark the word under the cursor, similar to the star 
                         command. The next free highlight group is used. 
                         If already on a mark: Clear the mark, like 
@@ -107,8 +108,10 @@ plugin offers the following advantages over the original:
 :MarkClear              Clear all marks. In contrast to disabling marks, the 
                         actual mark information is cleared, the next mark will 
                         use the first highlight group. This cannot be undone. 
+```
 
 ## SEARCHING 
+```
 [count]*         [count]# 
 [count]<Leader>* [count]<Leader># 
 [count]<Leader>/ [count]<Leader>? 
@@ -131,6 +134,7 @@ plugin offers the following advantages over the original:
             used, do a <Leader>*; otherwise 
             (<Leader>/ is the most recently 
             used), do a <Leader>/. 
+```
 
 If you work with multiple highlight groups and assign special meaning to them 
 (e.g. group 1 for notable functions, 2 for variables, 3 for includes), you can 
@@ -139,6 +143,7 @@ particular highlight group. With the general * and # commands above, you'd
 first need to locate a nearby occurrence of the desired highlight group if 
 it's not the last mark used. 
 
+```
 <k1> .. <k9>            Jump to the [count]'th next occurrence of the mark 
                         belonging to highlight group 1..9. 
 <C-k1> .. <C-k9>        Jump to the [count]'th previous occurrence of the mark 
@@ -146,12 +151,14 @@ it's not the last mark used.
                         Note that these commands only work when the "Num Lock" 
                         indicator of your keyboard is ON; otherwise, the 
                         keypad is used for cursor movement. 
+```
 
 ## MARK PERSISTENCE 
 The marks can be kept and restored across Vim sessions, using the viminfo 
 file. For this to work, the "!" flag must be part of the 'viminfo' setting: 
     set viminfo+=!  " Save and restore global variables. 
 
+```
 :MarkLoad               Restore the marks from the previous Vim session. All 
                         current marks are discarded. 
 :MarkLoad {slot}        Restore the marks stored in the named {slot}. All 
@@ -166,6 +173,7 @@ file. For this to work, the "!" flag must be part of the 'viminfo' setting:
                         otherwise, you can just recall within the current 
                         session. When no marks are currently defined, the 
                         {slot} is cleared. 
+```
 
 ## MARK INFORMATION 
 Both mark-highlighting and mark-searching commands print information about 
@@ -174,23 +182,27 @@ the mark and search pattern, e.g.
 This is especially useful when you want to add or subtract patterns to a mark 
 highlight group via [N]. 
 
+```
 :Marks                  List all mark highlight groups and the search patterns 
                         defined for them. 
                         The group that will be used for the next :Mark or 
                         <Leader>m command (with [N]) is shown with a ">". 
                         The last mark used for a search (via <Leader>*) is 
                         shown with a "/". 
+```
 
 ## MARK HIGHLIGHTING PALETTES 
 The plugin comes with three predefined palettes: original, extended, and 
 maximum. You can dynamically toggle between them, e.g. when you need more 
 marks or a different set of colors. 
 
+```
 :MarkPalette {palette}  Highlight existing and future marks with the colors 
                         defined in {palette}. If the new palette contains less 
                         mark groups than the current one, the additional marks 
                         are lost. 
                         You can use :command-completion for {palette}.
+```
  
 install details
 ## INSTALLATION 
@@ -214,7 +226,9 @@ Higher numbers always take precedence and are displayed above lower ones.
 
 Especially if you use GVIM, you can switch to a richer palette of up to 18 
 colors: 
+```vim script
     let g:mwDefaultHighlightingPalette = 'extended' 
+```
 Or, if you have both good eyes and display, you can try a palette that defines 
 27, 58, or even 77 colors, depending on the number of available colors: 
     let g:mwDefaultHighlightingPalette = 'maximum' 
