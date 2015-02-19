@@ -1,7 +1,11 @@
 # mark.vim
-Mark Vim plugin mirror by Ingo Karkat 
+Mark Vim is a plugin mirror by Ingo Karkat 
 http://www.vim.org/scripts/script.php?script_id=2666
+This repository is created for plugin manager convenience.
 
+---
+
+## DESCRIPTION
 This plugin adds mappings and a :Mark command to highlight several words in 
 different colors simultaneously, similar to the built-in 'hlsearch' 
 highlighting of search results and the * command. For example, when you 
@@ -20,7 +24,7 @@ plugin offers the following advantages over the original:
 - Marks can be persisted, and patterns can be added / subtracted from 
   mark highlight groups. 
 
-SEE ALSO 
+## SEE ALSO 
 - SearchAlternatives.vim (vimscript #4146) provides mappings and commands to 
   add and subtract alternative branches to the current search pattern. 
 - SearchHighlighting.vim (vimscript #4320) can change the semantics of the 
@@ -28,7 +32,7 @@ SEE ALSO
   functionality which instantly highlights the word under the cursor when 
   typing or moving around, like in many IDEs. 
 
-RELATED WORKS 
+## RELATED WORKS 
 - MultipleSearch (vimscript #479) can highlight in a single window and in all 
   buffers, but still relies on the :syntax highlighting method, which is 
   slower and less reliable. 
@@ -50,7 +54,7 @@ RELATED WORKS
 - searchmatch (vimscript #4869) has commands and mappings for :[1,2,3]match, 
   in the current window only. 
 
-HIGHLIGHTING 
+## HIGHLIGHTING 
 <Leader>m               Mark the word under the cursor, similar to the star 
                         command. The next free highlight group is used. 
                         If already on a mark: Clear the mark, like 
@@ -104,7 +108,7 @@ HIGHLIGHTING
                         actual mark information is cleared, the next mark will 
                         use the first highlight group. This cannot be undone. 
 
-SEARCHING 
+## SEARCHING 
 [count]*         [count]# 
 [count]<Leader>* [count]<Leader># 
 [count]<Leader>/ [count]<Leader>? 
@@ -143,7 +147,7 @@ it's not the last mark used.
                         indicator of your keyboard is ON; otherwise, the 
                         keypad is used for cursor movement. 
 
-MARK PERSISTENCE 
+## MARK PERSISTENCE 
 The marks can be kept and restored across Vim sessions, using the viminfo 
 file. For this to work, the "!" flag must be part of the 'viminfo' setting: 
     set viminfo+=!  " Save and restore global variables. 
@@ -163,7 +167,7 @@ file. For this to work, the "!" flag must be part of the 'viminfo' setting:
                         session. When no marks are currently defined, the 
                         {slot} is cleared. 
 
-MARK INFORMATION 
+## MARK INFORMATION 
 Both mark-highlighting and mark-searching commands print information about 
 the mark and search pattern, e.g. 
         mark-1/\<pattern\> 
@@ -177,7 +181,7 @@ highlight group via [N].
                         The last mark used for a search (via <Leader>*) is 
                         shown with a "/". 
 
-MARK HIGHLIGHTING PALETTES 
+## MARK HIGHLIGHTING PALETTES 
 The plugin comes with three predefined palettes: original, extended, and 
 maximum. You can dynamically toggle between them, e.g. when you need more 
 marks or a different set of colors. 
@@ -189,7 +193,7 @@ marks or a different set of colors.
                         You can use :command-completion for {palette}.
  
 install details
-INSTALLATION 
+## INSTALLATION 
 This script is packaged as a vimball. If you have the "gunzip" decompressor 
 in your PATH, simply edit the *.vmb.gz package in Vim; otherwise, decompress 
 the archive first, e.g. using WinZip. Inside Vim, install by sourcing the 
@@ -198,10 +202,10 @@ vimball or via the :UseVimball command.
     :so % 
 To uninstall, use the :RmVimball command. 
 
-DEPENDENCIES 
+## DEPENDENCIES 
 - Requires Vim 7.1 with matchadd(), or Vim 7.2 or higher. 
 
-CONFIGURATION 
+## CONFIGURATION 
 For a permanent configuration, put the following commands into your vimrc. 
 
 This plugin defines 6 mark groups: 
@@ -315,7 +319,7 @@ behavior:
     vmap <Plug>IgnoreMarkSet <Plug>MarkSet 
     xmap <Leader>m <Plug>MarkIWhiteSet 
 
-INTEGRATION 
+## INTEGRATION 
 The following functions offer (read-only) access to the number of marks and 
 individual patterns: 
 - mark#GetNum() 
