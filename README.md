@@ -226,7 +226,7 @@ Higher numbers always take precedence and are displayed above lower ones.
 
 Especially if you use GVIM, you can switch to a richer palette of up to 18 
 colors: 
-```vim script
+```vimscript
     let g:mwDefaultHighlightingPalette = 'extended' 
 ```
 Or, if you have both good eyes and display, you can try a palette that defines 
